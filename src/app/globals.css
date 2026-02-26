@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme {
+  --color-deep-ocean: #0a1628;
+  --color-ocean-mid: #1a3a5c;
+  --color-teal: #2d8a9e;
+  --color-teal-light: #5fb8c9;
+  --color-champagne: #d4af37;
+  --color-champagne-light: #f0d77a;
+  --color-cream: #faf8f5;
+  --color-pearl: #f5f3f0;
+  --color-smoke: #8a8a8a;
+  --color-charcoal: #2a2a2a;
+
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-montserrat);
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-charcoal);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
+
+  /* Transitions */
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Base utility for smooth scrolling */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+/* ===== LUXURY ANIMATIONS ===== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scrollPulse {
+  0% {
+    transform: scaleY(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleY(1.5);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scaleY(1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes subtleGlow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  }
+
+  50% {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease forwards;
+}
+
+.animate-scroll-pulse {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gold shimmer effect for premium badges */
+.shimmer-gold {
+  background: linear-gradient(90deg,
+      var(--color-champagne) 0%,
+      var(--color-champagne-light) 40%,
+      #fff 50%,
+      var(--color-champagne-light) 60%,
+      var(--color-champagne) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: goldShimmer 4s linear infinite;
+}
+
+/* Luminous pricing glow */
+.price-glow {
+  animation: subtleGlow 3s ease-in-out infinite;
+}
+
+/* ===== SELECTION STYLING ===== */
+
+::selection {
+  background-color: rgba(212, 175, 55, 0.2);
+  color: var(--color-deep-ocean);
+}
+
+/* ===== SCROLLBAR STYLING ===== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.6);
+}
+
+/* ===== IMAGE HOVER OVERLAYS ===== */
+
+.image-reveal {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ===== SMOOTH FOCUS STATES ===== */
+
+input:focus,
+textarea:focus {
+  border-color: var(--color-champagne) !important;
+  box-shadow: 0 1px 0 0 var(--color-champagne);
+  transition: all 0.3s ease;
+}
+
+/* ===== CUSTOM CURSOR (desktop only) ===== */
+
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
