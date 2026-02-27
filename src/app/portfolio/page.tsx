@@ -91,14 +91,12 @@ export default function PortfolioPage() {
 
                     {/* Masonry-style Grid with AnimatePresence */}
                     <motion.div
-                        layout
                         className="columns-1 md:columns-2 lg:columns-3 gap-6"
                     >
-                        <AnimatePresence mode="popLayout">
+                        <AnimatePresence mode="wait">
                             {filteredImages.map((img, i) => (
                                 <motion.div
                                     key={img.src}
-                                    layout
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
                                     exit={{ opacity: 0, scale: 0.9 }}
